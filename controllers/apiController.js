@@ -1,5 +1,6 @@
 const {Contacto} = require('../models/contactos');
 const {validationResult} = require('express-validator');
+const axios = require('axios');
 
 module.exports = {
     async listaContactos (req, res) {
@@ -49,5 +50,12 @@ module.exports = {
     async eliminarTodos(req, res) {
         await Contacto.deleteMany()
         res.json({ msg: 'Has vaciado tu agenda.'})
+    },
+
+    async apiRickMorty (req, res) {
+        const urlApi = "https://rickandmortyapi.com/api/location/?type=planet&name=earth";
+        const response = await axios.get(urlApi);
+        const planets = await response.data.results;
+        res.json(planets)
     }
 }
