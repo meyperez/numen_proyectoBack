@@ -19,4 +19,6 @@ router.put('/editar/:id', validateID, validateEditData, apiController.editar);
 router.delete('/eliminar/:id', validateID, apiController.eliminar);
 router.delete('/eliminar', apiController.eliminarTodos);
 
+router.get('/apiRickMorty', apiController.apiRickMorty);
+
 module.exports = router;
